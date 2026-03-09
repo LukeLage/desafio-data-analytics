@@ -78,7 +78,7 @@ O projeto utiliza **Matplotlib** e **Plotly** para gerar gráficos interativos e
 ├── data/               # Dados utilizados
 ├── requirements.txt    # Dependências
 ├── README.md           # Documentação do projeto
-└── utils.py            # Funções auxiliares (opcional)
+
 ```
 
 ---
