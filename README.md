@@ -97,16 +97,12 @@ Este trabalho representa a conclusão da trilha de Análise de Dados do programa
 
 ## 📧 Contato
 
-Seu Nome
-seu.email@exemplo.com
-[GitHub do projeto](https://github.com/seu-usuario/seu-projeto)
+Luke Malaquias Lage
+lukelage646@gmail.com
+[GitHub do projeto](https://github.com/LukeLage/desafio-data-analytics)
+[LinkedIn](https://www.linkedin.com/in/luke-malaquias-lage-04022a232/)
 
 ---
 
-## 🚀 Contribua!
-
-Pull requests são bem-vindos! Ajude a melhorar a análise, adicionar novos gráficos ou insights.
-
----
 
 ### ✅ Feito com ❤️ para o Desenvolve Itabira
