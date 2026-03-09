@@ -4,11 +4,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
 import plotly.express as px
+import sqlite3
 
 ## Carregamento dos dados
-df = pd.read_csv('data\customer_shopping_data.csv')
+df = pd.read_csv('data/customer_shopping_data.csv')
 df['invoice_date'] = pd.to_datetime(df['invoice_date'], format='%d/%m/%Y')
 print(df.head()) 
+
+# Coneção com o banco de dados SQLite
+conn = sqlite3.connect('data/customer_shopping_data.db')
+df.to_sql('customer_shopping_data', conn, if_exists='replace', index=False)
 
 ## Análise de dados
 print(df.describe())
