@@ -29,12 +29,14 @@ pip install streamlit pandas matplotlib plotly
 ## 🚀 Como rodar o projeto
 
 1. Clone o repositório:
-   ```bash
+```
+bash
 git clone https://github.com/seu-usuario/seu-projeto.git
 ```
 2. Instale as dependências.
 3. Execute o app Streamlit:
-   ```bash
+
+```bash
 streamlit run app.py
 ```
 
@@ -98,8 +100,11 @@ Este trabalho representa a conclusão da trilha de Análise de Dados do programa
 ## 📧 Contato
 
 Luke Malaquias Lage
+
 lukelage646@gmail.com
+
 [GitHub do projeto](https://github.com/LukeLage/desafio-data-analytics)
+
 [LinkedIn](https://www.linkedin.com/in/luke-malaquias-lage-04022a232/)
 
 ---
