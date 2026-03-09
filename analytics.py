@@ -67,6 +67,8 @@ if informacoes_click:
 if limpar_click:
     st.write('')
 
+# Métricas apresentadas em formato de cards, usando a função st.metric do Streamlit
+
 informacoes_basicas1, informacoes_basicas2, informacoes_basicas3 = st.columns(3)
 
 with informacoes_basicas1: 
@@ -119,3 +121,16 @@ with informacoes_basicas3:
             vendas_primavera = (df[df['seasons'] == 'Primavera']['price'] * 
             df[df['seasons'] == 'Primavera']['quantity']).sum()
             st.metric(label='Vendas na Primavera', value=f'R$ {vendas_primavera / 1000000 :.2f}')
+
+# Gráficos usados para visualização de dados
+
+grafico1, grafico2 = st.columns(2)
+
+with grafico1:
+    metodo_pagamento = df['payment_method'].value_counts()
+    fig1 = px.pie(metodo_pagamento, values=metodo_pagamento.values, names=metodo_pagamento.index, title='Métodos de Pagamento')
+    st.plotly_chart(fig1)
+with grafico2:
+    localidades = df['shopping_mall'].value_counts()
+    fig2 = px.bar(localidades, x=localidades.index, y=localidades.values, title='Localidades de Compras dos Clientes', labels={'x': 'Localidade', 'y': 'Número de Clientes'})
+    st.plotly_chart(fig2)
