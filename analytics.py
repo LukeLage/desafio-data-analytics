@@ -6,14 +6,15 @@ import streamlit as st
 import plotly.express as px
 import sqlite3
 
+# Coneção com o banco de dados SQLite
+data = pd.read_csv('data/customer_shopping_data.csv')
+conn = sqlite3.connect('data/customer_shopping_data.db')
+data.to_sql('customer_shopping_data', conn, if_exists='replace', index=False)
+
 ## Carregamento dos dados
-df = pd.read_csv('data/customer_shopping_data.csv')
+df = pd.read_sql_query('SELECT * FROM customer_shopping_data', conn)
 df['invoice_date'] = pd.to_datetime(df['invoice_date'], format='%d/%m/%Y')
 print(df.head()) 
-
-# Coneção com o banco de dados SQLite
-conn = sqlite3.connect('data/customer_shopping_data.db')
-df.to_sql('customer_shopping_data', conn, if_exists='replace', index=False)
 
 ## Análise de dados
 print(df.describe())
@@ -139,3 +140,6 @@ with grafico2:
     localidades = df['shopping_mall'].value_counts()
     fig2 = px.bar(localidades, x=localidades.index, y=localidades.values, title='Localidades de Compras dos Clientes', labels={'x': 'Localidade', 'y': 'Número de Clientes'})
     st.plotly_chart(fig2)
+
+# Fechando a conexão com o banco de dados
+conn.close()
