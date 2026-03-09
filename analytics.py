@@ -14,6 +14,11 @@ print(df.head())
 print(df.describe())
 print(df.info())
 
+df['seasons'] = df['invoice_date'].dt.month % 12 // 3 + 1
+df['seasons'] = df['seasons'].map({1: 'Verão', 2: 'Outono', 3: 'Inverno', 4: 'Primavera'})
+
+print(df['seasons'].value_counts())
+
 # Visualização de dados
 st.title('Desafio Data Analytics - InsightFlow')
 
@@ -39,15 +44,14 @@ with sidebar:
     with metricas_clientes:
         opcoes_metricas_clientes = st.radio(
             'Selecione a métrica de clientes que deseja visualizar: ',
-            ['Número de Clientes por Gênero', 'Faixa étaria média', 'Número de Clientes'],
+            ['Moda faixa étaria', 'Número de Clientes por Gênero', 'Faixa étaria média'],
         )
     
-    data_compras = st.container(border = True)
-    with data_compras:
-        slider_data_compras = st.select_slider(
-            'Selecione o intervalo de datas que deseja analisar: ',
-            options= df['invoice_date'].unique(), 
-            value = (df['invoice_date'].min(), df['invoice_date'].max())
+    estacao_container = st.container(border = True)
+    with estacao_container:
+        vendas_estacao = st.select_slider(
+            'Vendas baseadas nas estações: ',
+            options= df['seasons'].unique().tolist()
         )
 
     contatos = st.container(border = True)
@@ -84,18 +88,34 @@ with informacoes_basicas2:
     metricas_clientes = st.container(border = True)
     with metricas_clientes:
         st.header('Métricas de Clientes')
-        
+        if opcoes_metricas_clientes == 'Número de Clientes por Gênero':
+            clientes_genero = df['gender'].value_counts()
+            st.metric (label=clientes_genero.index[0], value=clientes_genero.values[0])
+            st.metric (label=clientes_genero.index[1], value=clientes_genero.values[1])
+        elif opcoes_metricas_clientes == 'Faixa étaria média':
+            media_idade = df['age'].mean()
+            st.metric(label='Faixa Etária Média', value=f'{media_idade:.2f} anos')
+        elif opcoes_metricas_clientes == 'Moda faixa étaria':
+            moda_idade = df['age'].mode()[0]
+            st.metric(label='Faixa Etária Moda', value=f'{moda_idade} anos')
 
-with informacoes_basicas3: 
-    data_compras = st.container(border = True)
-    with data_compras: 
-        st.header('Vendas por Intervalo')
-        df_filtrado = df[(df['invoice_date'] >= slider_data_compras[0]) & (df['invoice_date'] <= slider_data_compras[1])]
-        valor_vendas = (df_filtrado['price'] * df_filtrado['quantity']).sum()
-        quantidade_vendas = df_filtrado['quantity'].sum()
-        st.metric(label='Total de Vendas', value=f'R$ {valor_vendas:.2f}')
-        st.metric(label='Quantidade Vendida', value=quantidade_vendas)
-
-descrepancia_genero = df['gender'].value_counts()
-fig_genero = px.pie(values=descrepancia_genero.values, names=descrepancia_genero.index, title='Descrepância de Gênero')
-st.plotly_chart(fig_genero)
+with informacoes_basicas3:
+    metricas_estacoes = st.container(border = True)
+    with metricas_estacoes:
+        st.header('Vendas por Estação (Milhões)')
+        if vendas_estacao == 'Verão':
+            vendas_verao = (df[df['seasons'] == 'Verão']['price'] * 
+            df[df['seasons'] == 'Verão']['quantity']).sum()
+            st.metric(label='Vendas no Verão', value=f'R$ {vendas_verao / 1000000:.2f}')
+        elif vendas_estacao == 'Outono':
+            vendas_outono = (df[df['seasons'] == 'Outono']['price'] * 
+            df[df['seasons'] == 'Outono']['quantity']).sum()
+            st.metric(label='Vendas no Outono', value=f'R$ {vendas_outono / 1000000:.2f}')
+        elif vendas_estacao == 'Inverno':
+            vendas_inverno = (df[df['seasons'] == 'Inverno']['price'] * 
+            df[df['seasons'] == 'Inverno']['quantity']).sum()
+            st.metric(label='Vendas no Inverno', value=f'R$ {vendas_inverno / 1000000:.2f}')
+        elif vendas_estacao == 'Primavera':
+            vendas_primavera = (df[df['seasons'] == 'Primavera']['price'] * 
+            df[df['seasons'] == 'Primavera']['quantity']).sum()
+            st.metric(label='Vendas na Primavera', value=f'R$ {vendas_primavera / 1000000 :.2f}')
