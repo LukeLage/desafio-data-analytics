@@ -1,7 +1,7 @@
 # Projeto Final — Trilha de Análise de Dados
 ## Desenvolve Itabira
 
-Este projeto foi desenvolvido como trabalho de finalização do curso da trilha de **Análise de Dados** do programa **Desenvolve Itabira**, com o objetivo de analisar dados de vendas de uma loja utilizando Python e ferramentas de visualização.
+Este projeto foi desenvolvido como trabalho de finalização do **Projeto Desenvolve Itabira**, com a trilha utilizada para a finalização sendo a de **Data Analytics**, com o objetivo de analisar dados de vendas de uma loja utilizando Python e ferramentas de visualização.
 
 ---
 
@@ -88,12 +88,6 @@ O projeto utiliza **Matplotlib** e **Plotly** para gerar gráficos interativos e
 - Os dados estão armazenados em um banco SQLite (`data/database.sqlite`).
 - Os gráficos interativos podem ser explorados diretamente na interface do Streamlit.
 - Este projeto foi desenvolvido para o **Desenvolve Itabira — Trilha de Análise de Dados**.
-
----
-
-## 🧑‍🎓 Finalização de Curso
-
-Este trabalho representa a conclusão da trilha de Análise de Dados do programa Desenvolve Itabira, demonstrando habilidades em manipulação, análise e visualização de dados com Python.
 
 ---
 
