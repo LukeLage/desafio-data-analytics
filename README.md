@@ -28,6 +28,7 @@ pip install streamlit pandas matplotlib plotly
 
 ## 📊 Dados
 os dados podem ser encontrados no link abaixo: 
+
 [Dados Kaggle](https://www.kaggle.com/datasets/mehmettahiraslan/customer-shopping-dataset)
 
 
