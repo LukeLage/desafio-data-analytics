@@ -37,7 +37,7 @@ os dados podem ser encontrados no link abaixo:
 1. Clone o repositório:
 ```
 bash
-git clone https://github.com/seu-usuario/seu-projeto.git
+git clone https://github.com/LukeLage/desafio-data-analytics.git
 ```
 2. Instale as dependências.
 3. Execute o app Streamlit:
