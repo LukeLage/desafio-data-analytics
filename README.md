@@ -1,5 +1,5 @@
 # Projeto Final — Trilha de Análise de Dados
-## Desenvolve Itabira
+## Projeto Desenvolve Itabira
 
 Este projeto foi desenvolvido como trabalho de finalização do **Projeto Desenvolve Itabira**, com a trilha utilizada para a finalização sendo a de **Data Analytics**, com o objetivo de analisar dados de vendas de uma loja utilizando Python e ferramentas de visualização.
 
@@ -26,12 +26,18 @@ pip install streamlit pandas matplotlib plotly
 
 ---
 
+## 📊 Dados
+os dados podem ser encontrados no link abaixo: 
+
+[Dados Kaggle](https://www.kaggle.com/datasets/mehmettahiraslan/customer-shopping-dataset)
+
+
 ## 🚀 Como rodar o projeto
 
 1. Clone o repositório:
 ```
 bash
-git clone https://github.com/seu-usuario/seu-projeto.git
+git clone https://github.com/LukeLage/desafio-data-analytics.git
 ```
 2. Instale as dependências.
 3. Execute o app Streamlit:
